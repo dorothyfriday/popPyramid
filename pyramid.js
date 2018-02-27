@@ -3,7 +3,7 @@ var div = d3.select("body").append("div")
     .style("opacity", 0);
 
 var svgHeight = 400;
-var svgWidth = 400;
+var svgWidth = 450;
 
 var margin = {
     top: 20,
@@ -39,7 +39,7 @@ var exampleData = [
     {group: '10-14', male: 9295, female: 8860},
     {group: '15-19', male: 12493, female: 12036},
     {group: '20-24', male: 17203, female: 15205},
-    {group: '25-29', male: 11129, female: 9382},
+    {group: '25-29', male: 16129, female: 9382},
     {group: '30-34', male: 9992, female: 9653},
     {group: '35-39', male: 9901, female: 10063},
     {group: '40-44', male: 10599, female: 10206},
@@ -183,11 +183,15 @@ svg.append("text").selectAll("tspan.female")
     .data(exampleData)
     .enter().append("tspan")
     .attr("class","female")
-    .attr("x", function(d){ return (pointA)-(45)-xScale(percentage(d.female)); })
-    .attr("y",function(d) { return yScale(d.group) + 20; })
-    .attr("fill","grey")
+    .attr("x", function(d){
+        if ((pointA)-xScale(percentage(d.female)) > 40) {return (pointA)-(4)-xScale(percentage(d.female))}
+        else {return (pointA)+(40)-xScale(percentage(d.female))};})
+    .attr("y",function(d) { return yScale(d.group) + heightNum/exampleData.length - barPadding; })
+    .attr("fill",function(d){
+        if ((pointA)-xScale(percentage(d.female)) > 40) {return "grey"}
+        else {return "white"};})
     .attr("stroke-width","2")
-    .attr("text-anchor","start")
+    .attr("text-anchor","end")
     .attr("font-size","12")
     .attr("font-family","Arial")
     .attr("font-weight","bold")
@@ -197,9 +201,13 @@ svg.append("text").selectAll("tspan.male")
     .data(exampleData)
     .enter().append("tspan")
     .attr("class","male")
-    .attr("x", function(d) { return pointB + (5) + xScale(percentage(d.male)); })
-    .attr("y",function(d) { return yScale(d.group)+20; })
-    .attr("fill","grey")
+    .attr("x", function(d) {
+        if (((pointB) + xScale(percentage(d.male))) < (svgWidth-40)) {return (pointB) + (4) + xScale(percentage(d.male))}
+        else {return (pointB)-(40) + xScale(percentage(d.male))};})
+    .attr("y",function(d) { return yScale(d.group)+ heightNum/exampleData.length - barPadding; })
+    .attr("fill",function(d) {
+        if (((pointB) + xScale(percentage(d.male))) < (svgWidth-40)) {return "grey"}
+        else {return "white"};})
     .attr("stroke-width","2")
     .attr("text-anchor","start")
     .attr("font-size","12")
