@@ -1,0 +1,100 @@
+html, body {
+  margin: 25px;
+  height: 100%;
+}
+
+svg {
+  border: 0px solid #ccc;
+}
+
+rect:hover {
+  fill: grey;
+  opacity: 0.5;
+}
+
+
+.text-labels path,
+.text-labels line {
+  fill: none;
+  stroke: #000;
+  stroke-width: 0;
+  shape-rendering: crispEdges;
+}
+
+.text-labels text {
+  text-anchor: middle;
+  font-family: Arial;
+  font-weight: Bold;
+  fill: #04244D;
+  font-size: 12px;
+}
+
+
+.axisleftside line,
+.axisrightside line,
+.axisleftside path,
+.axisrightside path{
+  stroke: grey;
+  stroke-width: 0.5;
+
+}
+
+
+.axisleftside text,
+.axisrightside text {
+  text-anchor: middle;
+  font-family: Arial;
+  font-weight: Bold;
+  fill: #04244D;
+  font-size: 12px;
+}
+
+.leftline text {
+  fill: none;
+  stroke: #000;
+  stroke-width: 0;
+}
+
+.leftline path {
+  fill: grey;
+  stroke: grey;
+  stroke-width: 0.5;
+  shape-rendering: crispEdges;
+}
+
+.leftline line {
+  fill: none;
+  stroke-width: 0.0;
+}
+
+.rightline line {
+  fill: none;
+  stroke-width: 0.0;
+}
+
+.rightline path {
+  fill: grey;
+  stroke: grey;
+  stroke-width: 0.5;
+  shape-rendering: crispEdges;
+}
+
+.rightline text {
+  fill: none;
+  stroke: #000;
+  stroke-width: 0;
+}
+
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 130px;
+  height: 32px;
+  padding: 2px;
+  font: 12px sans-serif;
+  font-weight: bold ;
+  background: whitesmoke;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
+}
